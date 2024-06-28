@@ -1,11 +1,16 @@
 const express = require('express');
+const path = require('path');
+
 const app = express();
-const port = 3000;
 
-app.get('/', (req, res) => {
-    res.send('Welcome to mosowo.com!');
-});
+// Serve static files from the 'Public' directory
+app.use(express.static(path.join(__dirname, 'Public')));
 
+// Start the server
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`mosowo.com server running on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
+
+
+
