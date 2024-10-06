@@ -3,8 +3,11 @@ version: '3.7'
 services:
   haproxy:
     build: ./haproxy
+    volumes:
+      - ./haproxy/certs:/etc/haproxy/certs  # Mount the local certs directory
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       - mosowo_com
       - mosowo_net
